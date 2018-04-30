@@ -1,57 +1,16 @@
-module Main exposing (..)
+module Main exposing (main)
 
-import Html exposing (..)
+import Html exposing (program)
+import Html.Styled exposing (toUnstyled)
+import Types exposing (Model, Msg)
+import Home
 
 
 main : Program Never Model Msg
 main =
   program
-    { init = init
-    , update = update
-    , subscriptions = subscriptions
-    , view = view
+    { update = Home.update
+    , view = toUnstyled << Home.view
+    , init = Home.init
+    , subscriptions = Home.subscriptions
     }
-
-
-
---- Model / init / subscriptions ---
-
-
-type alias Model =
-  ()
-
-
-init : ( Model, Cmd Msg )
-init =
-  () ! []
-
-
-subscriptions : Model -> Sub Msg
-subscriptions _ =
-  Sub.none
-
-
-
---- Msg / update ---
-
-
-type Msg
-  = NoOp
-
-
-update : Msg -> Model -> ( Model, Cmd Msg )
-update msg model =
-  case msg of
-    NoOp ->
-      model ! []
-
-
-
---- view ---
-
-
-view : Model -> Html Msg
-view _ =
-  div [ class "elm" ]
-    [ h1 [] [ text "these8bits" ]
-    ]
