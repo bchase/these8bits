@@ -14183,6 +14183,21 @@ var _rtfeldman$elm_css$Html_Styled_Events$Options = F2(
 		return {stopPropagation: a, preventDefault: b};
 	});
 var _user$project$Types$NoOp = {ctor: 'NoOp'};
+var _user$project$Home$stylesheet = function (url) {
+	return A3(
+		_rtfeldman$elm_css$Html_Styled$node,
+		'link',
+		{
+			ctor: '::',
+			_0: _rtfeldman$elm_css$Html_Styled_Attributes$href(url),
+			_1: {
+				ctor: '::',
+				_0: _rtfeldman$elm_css$Html_Styled_Attributes$rel('stylesheet'),
+				_1: {ctor: '[]'}
+			}
+		},
+		{ctor: '[]'});
+};
 var _user$project$Home$view = function (_p0) {
 	return A2(
 		_rtfeldman$elm_css$Html_Styled$div,
@@ -14194,34 +14209,117 @@ var _user$project$Home$view = function (_p0) {
 				_0: _rtfeldman$elm_css$Html_Styled_Attributes$css(
 					{
 						ctor: '::',
-						_0: _rtfeldman$elm_css$Css$textAlign(_rtfeldman$elm_css$Css$center),
-						_1: {ctor: '[]'}
+						_0: _rtfeldman$elm_css$Css$fontFamilies(
+							{
+								ctor: '::',
+								_0: 'Ubuntu Mono',
+								_1: {ctor: '[]'}
+							}),
+						_1: {
+							ctor: '::',
+							_0: _rtfeldman$elm_css$Css$fontFamily(_rtfeldman$elm_css$Css$monospace),
+							_1: {
+								ctor: '::',
+								_0: _rtfeldman$elm_css$Css$textAlign(_rtfeldman$elm_css$Css$center),
+								_1: {ctor: '[]'}
+							}
+						}
 					}),
 				_1: {ctor: '[]'}
 			}
 		},
 		{
 			ctor: '::',
-			_0: A2(
-				_rtfeldman$elm_css$Html_Styled$div,
-				{
-					ctor: '::',
-					_0: _rtfeldman$elm_css$Html_Styled_Attributes$id('masthead'),
-					_1: {ctor: '[]'}
-				},
-				{
-					ctor: '::',
-					_0: A2(
-						_rtfeldman$elm_css$Html_Styled$h1,
-						{ctor: '[]'},
-						{
+			_0: _user$project$Home$stylesheet('https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700'),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_rtfeldman$elm_css$Html_Styled$div,
+					{
+						ctor: '::',
+						_0: _rtfeldman$elm_css$Html_Styled_Attributes$id('masthead'),
+						_1: {ctor: '[]'}
+					},
+					{
+						ctor: '::',
+						_0: A2(
+							_rtfeldman$elm_css$Html_Styled$h1,
+							{ctor: '[]'},
+							{
+								ctor: '::',
+								_0: _rtfeldman$elm_css$Html_Styled$text('these8bits'),
+								_1: {ctor: '[]'}
+							}),
+						_1: {
 							ctor: '::',
-							_0: _rtfeldman$elm_css$Html_Styled$text('these8bits'),
-							_1: {ctor: '[]'}
-						}),
-					_1: {ctor: '[]'}
-				}),
-			_1: {ctor: '[]'}
+							_0: A2(
+								_rtfeldman$elm_css$Html_Styled$p,
+								{ctor: '[]'},
+								{
+									ctor: '::',
+									_0: A2(
+										_rtfeldman$elm_css$Html_Styled$a,
+										{
+											ctor: '::',
+											_0: _rtfeldman$elm_css$Html_Styled_Attributes$href('https://github.com/bchase'),
+											_1: {ctor: '[]'}
+										},
+										{
+											ctor: '::',
+											_0: _rtfeldman$elm_css$Html_Styled$text('GitHub'),
+											_1: {ctor: '[]'}
+										}),
+									_1: {ctor: '[]'}
+								}),
+							_1: {
+								ctor: '::',
+								_0: A2(
+									_rtfeldman$elm_css$Html_Styled$p,
+									{ctor: '[]'},
+									{
+										ctor: '::',
+										_0: A2(
+											_rtfeldman$elm_css$Html_Styled$a,
+											{
+												ctor: '::',
+												_0: _rtfeldman$elm_css$Html_Styled_Attributes$href('mailto:brad@these8bits.com'),
+												_1: {ctor: '[]'}
+											},
+											{
+												ctor: '::',
+												_0: _rtfeldman$elm_css$Html_Styled$text('Contact'),
+												_1: {ctor: '[]'}
+											}),
+										_1: {ctor: '[]'}
+									}),
+								_1: {
+									ctor: '::',
+									_0: A2(
+										_rtfeldman$elm_css$Html_Styled$p,
+										{ctor: '[]'},
+										{
+											ctor: '::',
+											_0: A2(
+												_rtfeldman$elm_css$Html_Styled$a,
+												{
+													ctor: '::',
+													_0: _rtfeldman$elm_css$Html_Styled_Attributes$href('https://www.linkedin.com/in/brad-chase-6b531343'),
+													_1: {ctor: '[]'}
+												},
+												{
+													ctor: '::',
+													_0: _rtfeldman$elm_css$Html_Styled$text('LinkedIn'),
+													_1: {ctor: '[]'}
+												}),
+											_1: {ctor: '[]'}
+										}),
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}),
+				_1: {ctor: '[]'}
+			}
 		});
 };
 var _user$project$Home$update = F2(

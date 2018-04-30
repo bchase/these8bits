@@ -4,7 +4,7 @@ import Css exposing (..)
 import Html.Styled exposing (..)
 import Html.Styled.Attributes exposing (..)
 import Html.Styled.Events exposing (..)
-import Types exposing (Model, Msg(..))
+import Types exposing (Model, Msg(..), Url)
 
 
 --- init / subscriptions ---
@@ -37,8 +37,20 @@ update msg model =
 
 view : Model -> Html Msg
 view _ =
-  div [ id "main", css [ textAlign center ] ]
-    [ div [ id "masthead" ]
+  div [ id "main", css [ fontFamilies [ "Ubuntu Mono" ], fontFamily monospace, textAlign center ] ]
+    [ stylesheet "https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700"
+    , div [ id "masthead" ]
       [ h1 [] [ text "these8bits" ]
+      , p [] [ a [ href "https://github.com/bchase" ] [ text "GitHub" ] ]
+      , p [] [ a [ href "mailto:brad@these8bits.com" ] [ text "Contact" ] ]
       ]
     ]
+
+
+
+--- view helpers ---
+
+
+stylesheet : Url -> Html Msg
+stylesheet url =
+  node "link" [ href url, rel "stylesheet" ] []
