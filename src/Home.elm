@@ -83,10 +83,9 @@ view { rows } =
 
     styles =
       css
-        [ fontFamilies [ "Ubuntu Mono" ]
-        , fontFamily monospace
+        [ fontFamilies [ "Ubuntu Mono", monospace.value ]
         , textAlign center
-        , color <| hex "fff"
+        , color <| hex "ff7f00"
         ]
   in
     div [ id "main", styles ]

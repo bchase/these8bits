@@ -14863,20 +14863,20 @@ var _user$project$Home$view = function (_p0) {
 				{
 					ctor: '::',
 					_0: 'Ubuntu Mono',
-					_1: {ctor: '[]'}
+					_1: {
+						ctor: '::',
+						_0: _rtfeldman$elm_css$Css$monospace.value,
+						_1: {ctor: '[]'}
+					}
 				}),
 			_1: {
 				ctor: '::',
-				_0: _rtfeldman$elm_css$Css$fontFamily(_rtfeldman$elm_css$Css$monospace),
+				_0: _rtfeldman$elm_css$Css$textAlign(_rtfeldman$elm_css$Css$center),
 				_1: {
 					ctor: '::',
-					_0: _rtfeldman$elm_css$Css$textAlign(_rtfeldman$elm_css$Css$center),
-					_1: {
-						ctor: '::',
-						_0: _rtfeldman$elm_css$Css$color(
-							_rtfeldman$elm_css$Css$hex('fff')),
-						_1: {ctor: '[]'}
-					}
+					_0: _rtfeldman$elm_css$Css$color(
+						_rtfeldman$elm_css$Css$hex('ff7f00')),
+					_1: {ctor: '[]'}
 				}
 			}
 		});
