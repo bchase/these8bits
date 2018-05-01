@@ -14828,8 +14828,8 @@ var _user$project$Ports$styleBody = _elm_lang$core$Native_Platform.outgoingPort(
 var _user$project$Types$Model = function (a) {
 	return {rows: a};
 };
-var _user$project$Types$Tick = function (a) {
-	return {ctor: 'Tick', _0: a};
+var _user$project$Types$RollAnimation = function (a) {
+	return {ctor: 'RollAnimation', _0: a};
 };
 var _user$project$Types$NoOp = {ctor: 'NoOp'};
 
@@ -15119,7 +15119,7 @@ var _user$project$Home$subscriptions = function (_p11) {
 	return _elm_lang$core$Platform_Sub$batch(
 		{
 			ctor: '::',
-			_0: A2(_elm_lang$core$Time$every, 450 * _elm_lang$core$Time$millisecond, _user$project$Types$Tick),
+			_0: A2(_elm_lang$core$Time$every, 450 * _elm_lang$core$Time$millisecond, _user$project$Types$RollAnimation),
 			_1: {ctor: '[]'}
 		});
 };

@@ -27,7 +27,7 @@ init =
 subscriptions : Model -> Sub Msg
 subscriptions _ =
   Sub.batch
-    [ every (450 * millisecond) Tick
+    [ every (450 * millisecond) RollAnimation
     ]
 
 
@@ -48,7 +48,7 @@ update msg ({ rows } as model) =
       NoOp ->
         model ! []
 
-      Tick now ->
+      RollAnimation _ ->
         { model | rows = roll rows } ! []
 
 

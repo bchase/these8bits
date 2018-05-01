@@ -10,7 +10,7 @@ type alias Model =
 
 type Msg
   = NoOp
-  | Tick Time
+  | RollAnimation Time
 
 
 type alias Url =
