@@ -8,6 +8,7 @@ import Html.Styled.Events exposing (..)
 import Maybe.Extra as Maybe
 import Array
 import Time exposing (every, millisecond)
+import Ports
 import Types exposing (Model, Msg(..), Url)
 
 
@@ -20,7 +21,7 @@ init =
     empty =
       Model <| List.reverse [ 0, 1, 2, 3, 4, 5, 6, 7 ]
   in
-    empty ! []
+    empty ! [ Ports.styleBody bodyStyles ]
 
 
 subscriptions : Model -> Sub Msg
@@ -55,6 +56,10 @@ update msg ({ rows } as model) =
 --- view ---
 
 
+bodyStyles =
+  "background-color: #000"
+
+
 view : Model -> Html Msg
 view { rows } =
   let
@@ -75,16 +80,26 @@ view { rows } =
           |> Maybe.map (List.map ((\cs -> p [ css [ margin (px 0) ] ] cs) << List.map (\n -> span [] [ text n ])))
           |> Maybe.map (\rs -> div [] rs)
           |> Maybe.withDefault (text "")
-  in
-    div [ id "main", css [ fontFamilies [ "Ubuntu Mono" ], fontFamily monospace, textAlign center ] ]
-      [ stylesheet "https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700"
-      , div [ id "masthead" ]
-        [ h1 [] [ text "these8bits" ]
+
+    styles =
+      css
+        [ fontFamilies [ "Ubuntu Mono" ]
+        , fontFamily monospace
+        , textAlign center
+        , color <| hex "fff"
         ]
+  in
+    div [ id "main", styles ]
+      [ stylesheet "https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700"
+      , div [ id "masthead" ] [ h1 [] [ text "these8bits" ] ]
       , grid
       , div [ id "links" ]
-        [ p [] [ a [ href "https://github.com/bchase" ] [ text "GitHub" ] ]
-        , p [] [ a [ href "mailto:brad@these8bits.com" ] [ text "Contact" ] ]
+        [ p [] [ a [ href "https://github.com/bchase/these8bits" ] [ text "made with <3 in Elm" ] ]
+        , p []
+          [ a [ href "https://github.com/bchase" ] [ text "GitHub" ]
+          , text "|"
+          , a [ href "mailto:brad@these8bits.com" ] [ text "Contact" ]
+          ]
         ]
       ]
 
