@@ -4,12 +4,14 @@ import Time exposing (Time)
 
 
 type alias Model =
-  { rows : List Int
+  { cursor : Bool
+  , rows : List Int
   }
 
 
 type Msg
   = NoOp
+  | FlashCursor Time
   | RollAnimation Time
 
 

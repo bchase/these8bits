@@ -14825,11 +14825,15 @@ var _user$project$Ports$styleBody = _elm_lang$core$Native_Platform.outgoingPort(
 		return v;
 	});
 
-var _user$project$Types$Model = function (a) {
-	return {rows: a};
-};
+var _user$project$Types$Model = F2(
+	function (a, b) {
+		return {cursor: a, rows: b};
+	});
 var _user$project$Types$RollAnimation = function (a) {
 	return {ctor: 'RollAnimation', _0: a};
+};
+var _user$project$Types$FlashCursor = function (a) {
+	return {ctor: 'FlashCursor', _0: a};
 };
 var _user$project$Types$NoOp = {ctor: 'NoOp'};
 
@@ -14856,6 +14860,27 @@ var _user$project$Home$stylesheet = function (url) {
 var _user$project$Home$view = function (_p0) {
 	var _p1 = _p0;
 	var _p6 = _p1.rows;
+	var cursorStyles = _p1.cursor ? {
+		ctor: '::',
+		_0: _rtfeldman$elm_css$Css$backgroundColor(
+			_rtfeldman$elm_css$Css$hex('ff7f00')),
+		_1: {
+			ctor: '::',
+			_0: _rtfeldman$elm_css$Css$color(
+				_rtfeldman$elm_css$Css$hex('000')),
+			_1: {ctor: '[]'}
+		}
+	} : {
+		ctor: '::',
+		_0: _rtfeldman$elm_css$Css$backgroundColor(
+			_rtfeldman$elm_css$Css$hex('000')),
+		_1: {
+			ctor: '::',
+			_0: _rtfeldman$elm_css$Css$color(
+				_rtfeldman$elm_css$Css$hex('ff7f00')),
+			_1: {ctor: '[]'}
+		}
+	};
 	var styles = _rtfeldman$elm_css$Html_Styled_Attributes$css(
 		{
 			ctor: '::',
@@ -14905,59 +14930,58 @@ var _user$project$Home$view = function (_p0) {
 					return A2(
 						_rtfeldman$elm_css$Html_Styled$div,
 						{ctor: '[]'},
-						rs);
-				},
-				A2(
-					_elm_lang$core$Maybe$map,
-					_elm_lang$core$List$map(
-						function (_p3) {
-							return function (cs) {
-								return A2(
-									_rtfeldman$elm_css$Html_Styled$p,
-									{
-										ctor: '::',
-										_0: _rtfeldman$elm_css$Html_Styled_Attributes$css(
-											{
-												ctor: '::',
-												_0: _rtfeldman$elm_css$Css$margin(
-													_rtfeldman$elm_css$Css$px(0)),
-												_1: {ctor: '[]'}
-											}),
-										_1: {ctor: '[]'}
-									},
-									cs);
-							}(
-								A2(
-									_elm_lang$core$List$map,
-									function (n) {
-										return A2(
-											_rtfeldman$elm_css$Html_Styled$span,
-											{ctor: '[]'},
-											{
-												ctor: '::',
-												_0: _rtfeldman$elm_css$Html_Styled$text(n),
-												_1: {ctor: '[]'}
-											});
-									},
-									_p3));
-						}),
-					function (_p4) {
-						return _elm_community$maybe_extra$Maybe_Extra$combine(
-							A2(_elm_lang$core$List$map, _elm_community$maybe_extra$Maybe_Extra$combine, _p4));
-					}(
 						A2(
 							_elm_lang$core$List$map,
-							function (_p5) {
-								return A3(
-									_elm_lang$core$Basics$flip,
-									_elm_lang$core$List$map,
-									cols,
-									_elm_lang$core$Array$get(_p5));
+							function (_p3) {
+								return function (cs) {
+									return A2(
+										_rtfeldman$elm_css$Html_Styled$p,
+										{
+											ctor: '::',
+											_0: _rtfeldman$elm_css$Html_Styled_Attributes$css(
+												{
+													ctor: '::',
+													_0: _rtfeldman$elm_css$Css$margin(
+														_rtfeldman$elm_css$Css$px(0)),
+													_1: {ctor: '[]'}
+												}),
+											_1: {ctor: '[]'}
+										},
+										cs);
+								}(
+									A2(
+										_elm_lang$core$List$map,
+										function (n) {
+											return A2(
+												_rtfeldman$elm_css$Html_Styled$span,
+												{ctor: '[]'},
+												{
+													ctor: '::',
+													_0: _rtfeldman$elm_css$Html_Styled$text(n),
+													_1: {ctor: '[]'}
+												});
+										},
+										_p3));
 							},
-							A2(
-								_elm_lang$core$List$range,
-								0,
-								_elm_lang$core$List$length(_p6) - 1))))));
+							rs));
+				},
+				function (_p4) {
+					return _elm_community$maybe_extra$Maybe_Extra$combine(
+						A2(_elm_lang$core$List$map, _elm_community$maybe_extra$Maybe_Extra$combine, _p4));
+				}(
+					A2(
+						_elm_lang$core$List$map,
+						function (_p5) {
+							return A3(
+								_elm_lang$core$Basics$flip,
+								_elm_lang$core$List$map,
+								cols,
+								_elm_lang$core$Array$get(_p5));
+						},
+						A2(
+							_elm_lang$core$List$range,
+							0,
+							_elm_lang$core$List$length(_p6) - 1)))));
 	}();
 	return A2(
 		_rtfeldman$elm_css$Html_Styled$div,
@@ -14989,8 +15013,23 @@ var _user$project$Home$view = function (_p0) {
 							{ctor: '[]'},
 							{
 								ctor: '::',
-								_0: _rtfeldman$elm_css$Html_Styled$text('these8bits'),
-								_1: {ctor: '[]'}
+								_0: _rtfeldman$elm_css$Html_Styled$text('$ these8bit'),
+								_1: {
+									ctor: '::',
+									_0: A2(
+										_rtfeldman$elm_css$Html_Styled$span,
+										{
+											ctor: '::',
+											_0: _rtfeldman$elm_css$Html_Styled_Attributes$css(cursorStyles),
+											_1: {ctor: '[]'}
+										},
+										{
+											ctor: '::',
+											_0: _rtfeldman$elm_css$Html_Styled$text('s'),
+											_1: {ctor: '[]'}
+										}),
+									_1: {ctor: '[]'}
+								}
 							}),
 						_1: {ctor: '[]'}
 					}),
@@ -15099,32 +15138,46 @@ var _user$project$Home$update = F2(
 					rs));
 		};
 		var _p9 = msg;
-		if (_p9.ctor === 'NoOp') {
-			return A2(
-				_elm_lang$core$Platform_Cmd_ops['!'],
-				_p10,
-				{ctor: '[]'});
-		} else {
-			return A2(
-				_elm_lang$core$Platform_Cmd_ops['!'],
-				_elm_lang$core$Native_Utils.update(
+		switch (_p9.ctor) {
+			case 'NoOp':
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
 					_p10,
-					{
-						rows: roll(_p8.rows)
-					}),
-				{ctor: '[]'});
+					{ctor: '[]'});
+			case 'RollAnimation':
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_elm_lang$core$Native_Utils.update(
+						_p10,
+						{
+							rows: roll(_p8.rows)
+						}),
+					{ctor: '[]'});
+			default:
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_elm_lang$core$Native_Utils.update(
+						_p10,
+						{cursor: !_p8.cursor}),
+					{ctor: '[]'});
 		}
 	});
 var _user$project$Home$subscriptions = function (_p11) {
 	return _elm_lang$core$Platform_Sub$batch(
 		{
 			ctor: '::',
-			_0: A2(_elm_lang$core$Time$every, 450 * _elm_lang$core$Time$millisecond, _user$project$Types$RollAnimation),
-			_1: {ctor: '[]'}
+			_0: A2(_elm_lang$core$Time$every, 750 * _elm_lang$core$Time$millisecond, _user$project$Types$FlashCursor),
+			_1: {
+				ctor: '::',
+				_0: A2(_elm_lang$core$Time$every, 450 * _elm_lang$core$Time$millisecond, _user$project$Types$RollAnimation),
+				_1: {ctor: '[]'}
+			}
 		});
 };
 var _user$project$Home$init = function () {
-	var empty = _user$project$Types$Model(
+	var empty = A2(
+		_user$project$Types$Model,
+		true,
 		_elm_lang$core$List$reverse(
 			{
 				ctor: '::',

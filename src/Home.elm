@@ -19,7 +19,7 @@ init : ( Model, Cmd Msg )
 init =
   let
     empty =
-      Model <| List.reverse [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+      Model True <| List.reverse [ 0, 1, 2, 3, 4, 5, 6, 7 ]
   in
     empty ! [ Ports.styleBody bodyStyles ]
 
@@ -27,7 +27,8 @@ init =
 subscriptions : Model -> Sub Msg
 subscriptions _ =
   Sub.batch
-    [ every (450 * millisecond) RollAnimation
+    [ every (750 * millisecond) FlashCursor
+    , every (450 * millisecond) RollAnimation
     ]
 
 
@@ -36,7 +37,7 @@ subscriptions _ =
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
-update msg ({ rows } as model) =
+update msg ({ cursor, rows } as model) =
   let
     roll : List Int -> List Int
     roll rs =
@@ -51,6 +52,9 @@ update msg ({ rows } as model) =
       RollAnimation _ ->
         { model | rows = roll rows } ! []
 
+      FlashCursor _ ->
+        { model | cursor = not cursor } ! []
+
 
 
 --- view ---
@@ -61,7 +65,7 @@ bodyStyles =
 
 
 view : Model -> Html Msg
-view { rows } =
+view { cursor, rows } =
   let
     grid =
       -- dear repo visitor,
@@ -77,8 +81,7 @@ view { rows } =
         List.range 0 (List.length rows - 1)
           |> List.map (flip List.map cols << Array.get)
           |> (Maybe.combine << List.map Maybe.combine)
-          |> Maybe.map (List.map ((\cs -> p [ css [ margin (px 0) ] ] cs) << List.map (\n -> span [] [ text n ])))
-          |> Maybe.map (\rs -> div [] rs)
+          |> Maybe.map (\rs -> div [] <| List.map ((\cs -> p [ css [ margin (px 0) ] ] cs) << List.map (\n -> span [] [ text n ])) rs)
           |> Maybe.withDefault (text "")
 
     styles =
@@ -87,10 +90,21 @@ view { rows } =
         , textAlign center
         , color <| hex "ff7f00"
         ]
+
+    cursorStyles =
+      if cursor then
+        [ backgroundColor <| hex "ff7f00", color <| hex "000" ]
+      else
+        [ backgroundColor <| hex "000", color <| hex "ff7f00" ]
   in
     div [ id "main", styles ]
       [ stylesheet "https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700"
-      , div [ id "masthead" ] [ h1 [] [ text "these8bits" ] ]
+      , div [ id "masthead" ]
+        [ h1 []
+          [ text "$ these8bit"
+          , span [ css cursorStyles ] [ text "s" ]
+          ]
+        ]
       , grid
       , div [ id "links" ]
         [ p [] [ a [ href "https://github.com/bchase/these8bits" ] [ text "made with <3 in Elm" ] ]
