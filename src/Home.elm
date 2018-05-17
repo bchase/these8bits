@@ -5,23 +5,29 @@ import Html.Styled as Html
 import Html.Styled exposing (..)
 import Html.Styled.Attributes exposing (..)
 import Html.Styled.Events exposing (..)
+import Navigation
 import Maybe.Extra as Maybe
 import Array
 import Time exposing (every, millisecond)
 import Ports
-import Types exposing (Model, Msg(..), Url)
+import Routes
+import Helpers exposing ((?))
+import Types exposing (Model, Msg(..), Page(..), Url, Path)
 
 
 --- init / subscriptions ---
 
 
-init : ( Model, Cmd Msg )
-init =
+init : Navigation.Location -> ( Model, Cmd Msg )
+init loc =
   let
-    empty =
-      Model True <| List.reverse [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+    model =
+      Model PageNotFound True <| List.reverse [ 0, 1, 2, 3, 4, 5, 6, 7 ]
   in
-    empty ! [ Ports.styleBody bodyStyles ]
+    model
+      ! [ Ports.styleBody bodyStyles
+        , Routes.navigateBy loc
+        ]
 
 
 subscriptions : Model -> Sub Msg
@@ -55,6 +61,12 @@ update msg ({ cursor, rows } as model) =
       FlashCursor _ ->
         { model | cursor = not cursor } ! []
 
+      ChangePage page ->
+        model ! [ Routes.navigateTo page ]
+
+      SetLocation loc ->
+        { model | page = Routes.navLocationToPage loc } ! []
+
 
 
 --- view ---
@@ -65,7 +77,30 @@ bodyStyles =
 
 
 view : Model -> Html Msg
-view { cursor, rows } =
+view ({ page } as model) =
+  case page of
+    Homepage ->
+      homepage model
+
+    Portfolio ->
+      portfolio
+
+    _ ->
+      pageNotFound
+
+
+pageNotFound : Html Msg
+pageNotFound =
+  text "page not found"
+
+
+portfolio : Html Msg
+portfolio =
+  text "portfolio"
+
+
+homepage : Model -> Html Msg
+homepage { cursor, rows } =
   let
     grid =
       -- dear repo visitor,
@@ -89,6 +124,7 @@ view { cursor, rows } =
         [ fontFamilies [ "Ubuntu Mono", monospace.value ]
         , textAlign center
         , color <| hex "ff7f00"
+        , fontSize <| Css.em 1.5
         ]
 
     cursorStyles =
@@ -108,6 +144,7 @@ view { cursor, rows } =
       , grid
       , div [ id "links" ]
         [ p [] [ a [ href "https://github.com/bchase/these8bits" ] [ text "made with <3 in Elm" ] ]
+        , p [] [ a [ onClick <| ChangePage Portfolio ] [ text "Portfolio" ] ]
         , p []
           [ a [ href "https://github.com/bchase" ] [ text "GitHub" ]
           , text "|"
@@ -124,15 +161,3 @@ view { cursor, rows } =
 stylesheet : Url -> Html Msg
 stylesheet url =
   node "link" [ href url, rel "stylesheet" ] []
-
-
-
---- generic helpers ---
-
-
-(?) : a -> a -> Bool -> a
-(?) true false check =
-  if check then
-    true
-  else
-    false

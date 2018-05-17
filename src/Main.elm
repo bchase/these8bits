@@ -2,13 +2,15 @@ module Main exposing (main)
 
 import Html exposing (program)
 import Html.Styled exposing (toUnstyled)
-import Types exposing (Model, Msg)
+import Navigation
+import Types exposing (Model, Msg(SetLocation))
+import Routes
 import Home
 
 
 main : Program Never Model Msg
 main =
-  program
+  Navigation.program SetLocation
     { update = Home.update
     , view = toUnstyled << Home.view
     , init = Home.init
