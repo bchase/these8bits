@@ -22,11 +22,11 @@ init : Navigation.Location -> ( Model, Cmd Msg )
 init loc =
   let
     model =
-      Model PageNotFound True <| List.reverse [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+      Model Homepage True <| List.reverse [ 0, 1, 2, 3, 4, 5, 6, 7 ]
   in
     model
       ! [ Ports.styleBody bodyStyles
-        , Routes.navigateBy loc
+        -- , Routes.navigateBy loc
         ]
 
 
@@ -119,11 +119,14 @@ homepage { cursor, rows } =
           |> Maybe.map (\rs -> div [] <| List.map ((\cs -> p [ css [ margin (px 0) ] ] cs) << List.map (\n -> span [] [ text n ])) rs)
           |> Maybe.withDefault (text "")
 
+    orange =
+      hex "ff7f00"
+
     styles =
       css
         [ fontFamilies [ "Ubuntu Mono", monospace.value ]
         , textAlign center
-        , color <| hex "ff7f00"
+        , color orange
         , fontSize <| Css.em 1.5
         ]
 
@@ -132,6 +135,9 @@ homepage { cursor, rows } =
         [ backgroundColor <| hex "ff7f00", color <| hex "000" ]
       else
         [ backgroundColor <| hex "000", color <| hex "ff7f00" ]
+
+    -- hr_ =
+    --   div [ css [ borderTop3 (px 2) solid orange, Css.width (pct 50), margin2 zero auto, marginTop (Css.em 1) ] ] []
   in
     div [ id "main", styles ]
       [ stylesheet "https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700"
@@ -141,16 +147,16 @@ homepage { cursor, rows } =
           , span [ css cursorStyles ] [ text "s" ]
           ]
         ]
-      , grid
       , div [ id "links" ]
-        [ p [] [ a [ href "https://github.com/bchase/these8bits" ] [ text "made with <3 in Elm" ] ]
-        , p [] [ a [ onClick <| ChangePage Portfolio ] [ text "Portfolio" ] ]
-        , p []
+        -- [ p [] [ a [ href "https://github.com/bchase/these8bits" ] [ text "made with <3 in Elm" ] ]
+        -- , p [] [ a [ onClick <| ChangePage Portfolio, href "#" ] [ text "Portfolio" ] ]
+        [ p []
           [ a [ href "https://github.com/bchase" ] [ text "GitHub" ]
           , text "|"
           , a [ href "mailto:brad@these8bits.com" ] [ text "Contact" ]
           ]
         ]
+      , div [ css [ marginTop (Css.em 2) ] ] [ grid ]
       ]
 
 

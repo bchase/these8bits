@@ -17139,6 +17139,7 @@ var _user$project$Home$homepage = function (_p0) {
 			_1: {ctor: '[]'}
 		}
 	};
+	var orange = _rtfeldman$elm_css$Css$hex('ff7f00');
 	var styles = _rtfeldman$elm_css$Html_Styled_Attributes$css(
 		{
 			ctor: '::',
@@ -17157,8 +17158,7 @@ var _user$project$Home$homepage = function (_p0) {
 				_0: _rtfeldman$elm_css$Css$textAlign(_rtfeldman$elm_css$Css$center),
 				_1: {
 					ctor: '::',
-					_0: _rtfeldman$elm_css$Css$color(
-						_rtfeldman$elm_css$Css$hex('ff7f00')),
+					_0: _rtfeldman$elm_css$Css$color(orange),
 					_1: {
 						ctor: '::',
 						_0: _rtfeldman$elm_css$Css$fontSize(
@@ -17298,102 +17298,74 @@ var _user$project$Home$homepage = function (_p0) {
 					}),
 				_1: {
 					ctor: '::',
-					_0: grid,
+					_0: A2(
+						_rtfeldman$elm_css$Html_Styled$div,
+						{
+							ctor: '::',
+							_0: _rtfeldman$elm_css$Html_Styled_Attributes$id('links'),
+							_1: {ctor: '[]'}
+						},
+						{
+							ctor: '::',
+							_0: A2(
+								_rtfeldman$elm_css$Html_Styled$p,
+								{ctor: '[]'},
+								{
+									ctor: '::',
+									_0: A2(
+										_rtfeldman$elm_css$Html_Styled$a,
+										{
+											ctor: '::',
+											_0: _rtfeldman$elm_css$Html_Styled_Attributes$href('https://github.com/bchase'),
+											_1: {ctor: '[]'}
+										},
+										{
+											ctor: '::',
+											_0: _rtfeldman$elm_css$Html_Styled$text('GitHub'),
+											_1: {ctor: '[]'}
+										}),
+									_1: {
+										ctor: '::',
+										_0: _rtfeldman$elm_css$Html_Styled$text('|'),
+										_1: {
+											ctor: '::',
+											_0: A2(
+												_rtfeldman$elm_css$Html_Styled$a,
+												{
+													ctor: '::',
+													_0: _rtfeldman$elm_css$Html_Styled_Attributes$href('mailto:brad@these8bits.com'),
+													_1: {ctor: '[]'}
+												},
+												{
+													ctor: '::',
+													_0: _rtfeldman$elm_css$Html_Styled$text('Contact'),
+													_1: {ctor: '[]'}
+												}),
+											_1: {ctor: '[]'}
+										}
+									}
+								}),
+							_1: {ctor: '[]'}
+						}),
 					_1: {
 						ctor: '::',
 						_0: A2(
 							_rtfeldman$elm_css$Html_Styled$div,
 							{
 								ctor: '::',
-								_0: _rtfeldman$elm_css$Html_Styled_Attributes$id('links'),
+								_0: _rtfeldman$elm_css$Html_Styled_Attributes$css(
+									{
+										ctor: '::',
+										_0: _rtfeldman$elm_css$Css$marginTop(
+											_rtfeldman$elm_css$Css$em(2)),
+										_1: {ctor: '[]'}
+									}),
 								_1: {ctor: '[]'}
 							},
 							{
 								ctor: '::',
-								_0: A2(
-									_rtfeldman$elm_css$Html_Styled$p,
-									{ctor: '[]'},
-									{
-										ctor: '::',
-										_0: A2(
-											_rtfeldman$elm_css$Html_Styled$a,
-											{
-												ctor: '::',
-												_0: _rtfeldman$elm_css$Html_Styled_Attributes$href('https://github.com/bchase/these8bits'),
-												_1: {ctor: '[]'}
-											},
-											{
-												ctor: '::',
-												_0: _rtfeldman$elm_css$Html_Styled$text('made with <3 in Elm'),
-												_1: {ctor: '[]'}
-											}),
-										_1: {ctor: '[]'}
-									}),
-								_1: {
-									ctor: '::',
-									_0: A2(
-										_rtfeldman$elm_css$Html_Styled$p,
-										{ctor: '[]'},
-										{
-											ctor: '::',
-											_0: A2(
-												_rtfeldman$elm_css$Html_Styled$a,
-												{
-													ctor: '::',
-													_0: _rtfeldman$elm_css$Html_Styled_Events$onClick(
-														_user$project$Types$ChangePage(_user$project$Types$Portfolio)),
-													_1: {ctor: '[]'}
-												},
-												{
-													ctor: '::',
-													_0: _rtfeldman$elm_css$Html_Styled$text('Portfolio'),
-													_1: {ctor: '[]'}
-												}),
-											_1: {ctor: '[]'}
-										}),
-									_1: {
-										ctor: '::',
-										_0: A2(
-											_rtfeldman$elm_css$Html_Styled$p,
-											{ctor: '[]'},
-											{
-												ctor: '::',
-												_0: A2(
-													_rtfeldman$elm_css$Html_Styled$a,
-													{
-														ctor: '::',
-														_0: _rtfeldman$elm_css$Html_Styled_Attributes$href('https://github.com/bchase'),
-														_1: {ctor: '[]'}
-													},
-													{
-														ctor: '::',
-														_0: _rtfeldman$elm_css$Html_Styled$text('GitHub'),
-														_1: {ctor: '[]'}
-													}),
-												_1: {
-													ctor: '::',
-													_0: _rtfeldman$elm_css$Html_Styled$text('|'),
-													_1: {
-														ctor: '::',
-														_0: A2(
-															_rtfeldman$elm_css$Html_Styled$a,
-															{
-																ctor: '::',
-																_0: _rtfeldman$elm_css$Html_Styled_Attributes$href('mailto:brad@these8bits.com'),
-																_1: {ctor: '[]'}
-															},
-															{
-																ctor: '::',
-																_0: _rtfeldman$elm_css$Html_Styled$text('Contact'),
-																_1: {ctor: '[]'}
-															}),
-														_1: {ctor: '[]'}
-													}
-												}
-											}),
-										_1: {ctor: '[]'}
-									}
-								}
+								_0: grid,
+								_1: {ctor: '[]'}
 							}),
 						_1: {ctor: '[]'}
 					}
@@ -17495,7 +17467,7 @@ var _user$project$Home$subscriptions = function (_p14) {
 var _user$project$Home$init = function (loc) {
 	var model = A3(
 		_user$project$Types$Model,
-		_user$project$Types$PageNotFound,
+		_user$project$Types$Homepage,
 		true,
 		_elm_lang$core$List$reverse(
 			{
@@ -17537,11 +17509,7 @@ var _user$project$Home$init = function (loc) {
 		{
 			ctor: '::',
 			_0: _user$project$Ports$styleBody(_user$project$Home$bodyStyles),
-			_1: {
-				ctor: '::',
-				_0: _user$project$Routes$navigateBy(loc),
-				_1: {ctor: '[]'}
-			}
+			_1: {ctor: '[]'}
 		});
 };
 
