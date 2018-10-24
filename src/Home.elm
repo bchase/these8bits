@@ -148,11 +148,11 @@ homepage { cursor, rows } =
           ]
         ]
       , div [ id "links" ]
-        -- [ p [] [ a [ href "https://github.com/bchase/these8bits" ] [ text "made with <3 in Elm" ] ]
-        -- , p [] [ a [ onClick <| ChangePage Portfolio, href "#" ] [ text "Portfolio" ] ]
         [ p []
-          [ a [ href "https://github.com/bchase" ] [ text "GitHub" ]
-          , text "|"
+          [ a [ href "https://www.codementor.io/bchase" ] [ text "Codementor" ]
+          , text " | "
+          , a [ href "https://github.com/bchase" ] [ text "GitHub" ]
+          , text " | "
           , a [ href "mailto:brad@these8bits.com" ] [ text "Contact" ]
           ]
         ]

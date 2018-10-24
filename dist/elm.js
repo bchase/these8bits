@@ -17316,32 +17316,51 @@ var _user$project$Home$homepage = function (_p0) {
 										_rtfeldman$elm_css$Html_Styled$a,
 										{
 											ctor: '::',
-											_0: _rtfeldman$elm_css$Html_Styled_Attributes$href('https://github.com/bchase'),
+											_0: _rtfeldman$elm_css$Html_Styled_Attributes$href('https://www.codementor.io/bchase'),
 											_1: {ctor: '[]'}
 										},
 										{
 											ctor: '::',
-											_0: _rtfeldman$elm_css$Html_Styled$text('GitHub'),
+											_0: _rtfeldman$elm_css$Html_Styled$text('Codementor'),
 											_1: {ctor: '[]'}
 										}),
 									_1: {
 										ctor: '::',
-										_0: _rtfeldman$elm_css$Html_Styled$text('|'),
+										_0: _rtfeldman$elm_css$Html_Styled$text(' | '),
 										_1: {
 											ctor: '::',
 											_0: A2(
 												_rtfeldman$elm_css$Html_Styled$a,
 												{
 													ctor: '::',
-													_0: _rtfeldman$elm_css$Html_Styled_Attributes$href('mailto:brad@these8bits.com'),
+													_0: _rtfeldman$elm_css$Html_Styled_Attributes$href('https://github.com/bchase'),
 													_1: {ctor: '[]'}
 												},
 												{
 													ctor: '::',
-													_0: _rtfeldman$elm_css$Html_Styled$text('Contact'),
+													_0: _rtfeldman$elm_css$Html_Styled$text('GitHub'),
 													_1: {ctor: '[]'}
 												}),
-											_1: {ctor: '[]'}
+											_1: {
+												ctor: '::',
+												_0: _rtfeldman$elm_css$Html_Styled$text(' | '),
+												_1: {
+													ctor: '::',
+													_0: A2(
+														_rtfeldman$elm_css$Html_Styled$a,
+														{
+															ctor: '::',
+															_0: _rtfeldman$elm_css$Html_Styled_Attributes$href('mailto:brad@these8bits.com'),
+															_1: {ctor: '[]'}
+														},
+														{
+															ctor: '::',
+															_0: _rtfeldman$elm_css$Html_Styled$text('Contact'),
+															_1: {ctor: '[]'}
+														}),
+													_1: {ctor: '[]'}
+												}
+											}
 										}
 									}
 								}),
